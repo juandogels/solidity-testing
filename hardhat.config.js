@@ -22,12 +22,12 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
  module.exports = {
-  defaultNetwork: "mainnet",
+  defaultNetwork: "ganache",
   networks: {
-    localhost: {
-      url: "http://127.0.0.1:8545"
-    },
-    hardhat: {
+    ganache: {
+      url: "HTTP://127.0.0.1:7545",
+      chainId: 1337,
+      accounts: [privateKey]
     },
     testnet: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
@@ -39,7 +39,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
       url: "https://bsc-dataseed.binance.org/",
       chainId: 56,
       gasPrice: 20000000000,
-      accounts: [createPrivateKey]
+      accounts: [privateKey]
     }
   },
   solidity: {
@@ -58,6 +58,6 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     artifacts: "./artifacts"
   },
   mocha: {
-    timeout: 20000
+    timeout: 0
   }
 };
